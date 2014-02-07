@@ -1,0 +1,81 @@
+doctype html
+html(lang="en")
+    head
+        title Remoxly HTML Prototype
+        link( rel='stylesheet', type='text/css', href='/reset.css' )
+        link( rel='stylesheet', type='text/css', href='/test.css' )
+    body
+        mixin header( title )
+            .widget.header
+                h2= title
+                .tool ^
+
+        mixin color( title )
+            .widget.color
+                h3= title
+                .tool t
+
+        mixin slider( title )
+             .widget.slider
+                h3= title
+                h4 0.5
+                .tool.dec <
+                .tool.inc >
+
+        mixin toggle( title )
+            .widget.toggle
+                .tool *
+                h3= title
+
+        mixin button( tile )
+            .widget.button
+                h3= tile
+                .tool *
+
+        mixin textContent
+            // For name spacing
+            .remoxly 
+                .panel
+                    .groups
+                        .group
+                            .widgets.header
+                                +header( 'Particles' )
+
+                            .widgets.body
+                                +color( 'Particle Color' )
+                                +color( 'Trail Color' )
+
+                                +slider( 'Trail Width' )
+                                +slider( 'Speed' )
+                                +slider( 'Number of Particles' )
+                                +slider( 'Trail Length' )
+
+                                +toggle( 'Render Particles' )
+                                +toggle( 'Render Trails' )
+                                +toggle( 'Render Effects' )
+                                +toggle( 'Spawn Particles' )
+
+                        .group
+                            .widgets.header
+                                +header( 'Save and Load' )
+
+                            .widgets.body
+                                +slider( 'Number of files' )
+
+                                +button( 'Save' )
+                                +button( 'Load' )
+
+        .test-fixed-width
+            +textContent()
+        .test-fluid-width
+            +textContent()
+
+        // Template
+        script( id="slider", type="text/html" )
+            .widget.slider
+                h3 Number of files
+                .tool.button <
+                .tool.button >
+
+        // JavaScript Files     
+        script( src='/test.js' )

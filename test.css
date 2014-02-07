@@ -1,0 +1,167 @@
+.test-fixed-width {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 320px;
+}
+.test-fluid-width {
+  position: absolute;
+  top: 0;
+  left: 320px;
+  right: 0;
+}
+.remoxly {
+  background-color: #1d1d1d;
+}
+.remoxly h1,
+.remoxly h2,
+.remoxly h3,
+.remoxly h4,
+.remoxly h5,
+.remoxly h5,
+.remoxly h6,
+.remoxly p,
+.remoxly li,
+.remoxly span,
+.remoxly div {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: #ffffff;
+  font-weight: normal;
+  font-size: 12px -2px;
+}
+.remoxly .panel {
+  min-width: 320px;
+}
+.remoxly .widget {
+  position: relative;
+  height: 36px;
+}
+.remoxly .widget .tool {
+  text-align: center;
+}
+.remoxly .widget.header h2 {
+  display: block;
+  position: absolute;
+  height: 100%;
+  background-color: #343132;
+  border: 1px solid #1d1d1d;
+  left: 0;
+  right: 24px;
+  background-color: #9b59b6;
+}
+.remoxly .widget.header .tool {
+  display: block;
+  position: absolute;
+  height: 100%;
+  background-color: #343132;
+  border: 1px solid #1d1d1d;
+  right: 0;
+  width: 24px;
+  text-align: center;
+  background-color: #9b59b6;
+}
+.remoxly .widget.color h3 {
+  display: block;
+  position: absolute;
+  height: 100%;
+  background-color: #343132;
+  border: 1px solid #1d1d1d;
+  left: 0;
+  right: 24px;
+}
+.remoxly .widget.color .tool {
+  display: block;
+  position: absolute;
+  height: 100%;
+  background-color: #343132;
+  border: 1px solid #1d1d1d;
+  right: 0;
+  width: 24px;
+}
+.remoxly .widget.slider h3 {
+  background-color: #343132;
+  border: 1px solid #1d1d1d;
+  display: block;
+  position: absolute;
+  height: 100%;
+  left: 0;
+  right: 144px;
+}
+.remoxly .widget.slider h4 {
+  background-color: #343132;
+  border: 1px solid #1d1d1d;
+  display: block;
+  position: absolute;
+  height: 100%;
+  width: 96px;
+  right: 48px;
+  text-align: right;
+}
+.remoxly .widget.slider .tool {
+  display: block;
+  position: absolute;
+  height: 100%;
+  background-color: #343132;
+  border: 1px solid #1d1d1d;
+  width: 24px;
+}
+.remoxly .widget.slider .tool.dec {
+  right: 24px;
+}
+.remoxly .widget.slider .tool.tool.inc {
+  right: 0;
+}
+.remoxly .widget.toggle .tool {
+  background-color: #343132;
+  border: 1px solid #1d1d1d;
+  display: block;
+  position: absolute;
+  height: 100%;
+  width: 24px;
+  left: 0;
+}
+.remoxly .widget.toggle h3 {
+  background-color: #343132;
+  border: 1px solid #1d1d1d;
+  display: block;
+  position: absolute;
+  height: 100%;
+  left: 24px;
+  right: 0;
+}
+.remoxly .widget.toggle .tool {
+  background-color: #343132;
+  border: 1px solid #1d1d1d;
+  display: block;
+  position: absolute;
+  height: 100%;
+  width: 24px;
+  left: 0;
+}
+.remoxly .widget.toggle h3 {
+  background-color: #343132;
+  border: 1px solid #1d1d1d;
+  display: block;
+  position: absolute;
+  height: 100%;
+  left: 24px;
+  right: 0;
+}
+.remoxly .widget.button h3 {
+  background-color: #343132;
+  border: 1px solid #1d1d1d;
+  display: block;
+  position: absolute;
+  height: 100%;
+  right: 24px;
+  left: 0;
+}
+.remoxly .widget.button .tool {
+  background-color: #343132;
+  border: 1px solid #1d1d1d;
+  display: block;
+  position: absolute;
+  height: 100%;
+  width: 24px;
+  right: 0;
+}
