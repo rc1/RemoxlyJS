@@ -17,7 +17,9 @@ html(lang="en")
 
         mixin slider( title )
              .widget.slider
-                h3= title
+                h3
+                    .slide
+                    .text= title
                 h4 0.5
                 .tool.dec <
                 .tool.inc >

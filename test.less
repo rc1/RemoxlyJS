@@ -43,6 +43,7 @@
     @text-color: white;
     @base-px: 12px;  
     @cell-background-color: rgb( 52, 49, 50 );
+    @cell-background-color-light: rgb( 84, 82, 70 );
     @min-width: 320px;
 
 
@@ -57,8 +58,6 @@
     // Base color
     background-color: @background-color;
 
-
-
     .panel {
         min-width: 320px;
     }
@@ -66,6 +65,7 @@
     .widget {
         position: relative;
         height: @base-px * 3px;
+        overflow: hidden;
 
         // Basic setup for a cell
         .util-cell-layout() {
@@ -124,6 +124,19 @@
                 .util-cell-layout();
                 left: 0;
                 right: @base-px * 12px;
+                .slide {
+                    width: 50%; //  to be set via js
+                    height: 100%;
+                    background-color: pink;
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                }
+                .text {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                }
             }
             h4 {
                 .util-cell-apperance();
@@ -136,6 +149,7 @@
                 .util-cell-layout();
                 .util-cell-apperance();
                 width: @base-px * 2px;
+                background-color: @cell-background-color-light;
                 &.dec {
                     right: @base-px * 2px;
                 }
@@ -184,12 +198,16 @@
                 .util-cell-layout();
                 right: @base-px * 2px;
                 left: 0;
+                background-color: @cell-background-color-light;
+                border-right: none;
             }
             .tool {
                 .util-cell-apperance();
                 .util-cell-layout();
                 width: @base-px * 2px;
                 right: 0;
+                background-color: @cell-background-color-light;
+                border-left: none;
             }
         }
 
