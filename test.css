@@ -13,6 +13,9 @@
 .remoxly {
   background-color: #1d1d1d;
 }
+.remoxly * {
+  box-sizing: border-box;
+}
 .remoxly h1,
 .remoxly h2,
 .remoxly h3,
@@ -27,7 +30,7 @@
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   color: #ffffff;
   font-weight: normal;
-  font-size: 12px -2px;
+  font-size: 16px;
 }
 .remoxly .panel {
   min-width: 320px;
@@ -46,8 +49,13 @@
   height: 100%;
   background-color: #343132;
   border: 1px solid #1d1d1d;
+  padding-top: 8px;
+  padding-left: 6px;
+  padding-right: 6px;
+  overflow: hidden;
+  white-space: nowrap;
   left: 0;
-  right: 24px;
+  right: 36px;
   background-color: #9b59b6;
 }
 .remoxly .widget.header .tool {
@@ -56,8 +64,9 @@
   height: 100%;
   background-color: #343132;
   border: 1px solid #1d1d1d;
+  cursor: pointer;
   right: 0;
-  width: 24px;
+  width: 36px;
   text-align: center;
   background-color: #9b59b6;
 }
@@ -67,8 +76,13 @@
   height: 100%;
   background-color: #343132;
   border: 1px solid #1d1d1d;
+  padding-top: 8px;
+  padding-left: 6px;
+  padding-right: 6px;
+  overflow: hidden;
+  white-space: nowrap;
   left: 0;
-  right: 24px;
+  right: 36px;
 }
 .remoxly .widget.color .tool {
   display: block;
@@ -76,8 +90,9 @@
   height: 100%;
   background-color: #343132;
   border: 1px solid #1d1d1d;
+  cursor: pointer;
   right: 0;
-  width: 24px;
+  width: 36px;
 }
 .remoxly .widget.slider h3 {
   background-color: #343132;
@@ -85,18 +100,29 @@
   display: block;
   position: absolute;
   height: 100%;
+  padding-top: 8px;
+  padding-left: 6px;
+  padding-right: 6px;
+  overflow: hidden;
+  white-space: nowrap;
+  cursor: col-resize;
   left: 0;
-  right: 144px;
+  right: 168px;
 }
 .remoxly .widget.slider h3 .slide {
   width: 50%;
   height: 100%;
-  background-color: pink;
+  background-color: #a39d85;
   position: absolute;
   top: 0;
   left: 0;
 }
 .remoxly .widget.slider h3 .text {
+  padding-top: 8px;
+  padding-left: 6px;
+  padding-right: 6px;
+  overflow: hidden;
+  white-space: nowrap;
   position: absolute;
   top: 0;
   left: 0;
@@ -107,8 +133,13 @@
   display: block;
   position: absolute;
   height: 100%;
+  padding-top: 8px;
+  padding-left: 6px;
+  padding-right: 6px;
+  overflow: hidden;
+  white-space: nowrap;
   width: 96px;
-  right: 48px;
+  right: 72px;
   text-align: right;
 }
 .remoxly .widget.slider .tool {
@@ -117,32 +148,18 @@
   height: 100%;
   background-color: #343132;
   border: 1px solid #1d1d1d;
-  width: 24px;
+  cursor: pointer;
+  width: 36px;
   background-color: #545246;
 }
 .remoxly .widget.slider .tool.dec {
-  right: 24px;
+  right: 36px;
 }
 .remoxly .widget.slider .tool.tool.inc {
   right: 0;
 }
-.remoxly .widget.toggle .tool {
-  background-color: #343132;
-  border: 1px solid #1d1d1d;
-  display: block;
-  position: absolute;
-  height: 100%;
-  width: 24px;
-  left: 0;
-}
-.remoxly .widget.toggle h3 {
-  background-color: #343132;
-  border: 1px solid #1d1d1d;
-  display: block;
-  position: absolute;
-  height: 100%;
-  left: 24px;
-  right: 0;
+.remoxly .widget.toggle {
+  cursor: pointer;
 }
 .remoxly .widget.toggle .tool {
   background-color: #343132;
@@ -150,8 +167,11 @@
   display: block;
   position: absolute;
   height: 100%;
-  width: 24px;
+  width: 36px;
   left: 0;
+}
+.remoxly .widget.toggle .tool.active {
+  background-color: #f39c12;
 }
 .remoxly .widget.toggle h3 {
   background-color: #343132;
@@ -159,8 +179,16 @@
   display: block;
   position: absolute;
   height: 100%;
-  left: 24px;
+  padding-top: 8px;
+  padding-left: 6px;
+  padding-right: 6px;
+  overflow: hidden;
+  white-space: nowrap;
+  left: 36px;
   right: 0;
+}
+.remoxly .widget.button {
+  cursor: pointer;
 }
 .remoxly .widget.button h3 {
   background-color: #343132;
@@ -168,6 +196,11 @@
   display: block;
   position: absolute;
   height: 100%;
+  padding-top: 8px;
+  padding-left: 6px;
+  padding-right: 6px;
+  overflow: hidden;
+  white-space: nowrap;
   right: 24px;
   left: 0;
   background-color: #545246;
@@ -179,6 +212,11 @@
   display: block;
   position: absolute;
   height: 100%;
+  padding-top: 8px;
+  padding-left: 6px;
+  padding-right: 6px;
+  overflow: hidden;
+  white-space: nowrap;
   width: 24px;
   right: 0;
   background-color: #545246;

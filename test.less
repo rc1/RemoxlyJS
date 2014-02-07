@@ -16,6 +16,10 @@
 // All the gui stuff
 .remoxly {
 
+    * {
+        box-sizing: border-box;
+    }
+
     // Quick start color (to remove)
     @turquoise: #1abc9c;    
     @greenSea: #16a085;     
@@ -44,6 +48,7 @@
     @base-px: 12px;  
     @cell-background-color: rgb( 52, 49, 50 );
     @cell-background-color-light: rgb( 84, 82, 70 );
+    @cell-background-color-lighter: rgb( 163, 157, 133 );
     @min-width: 320px;
 
 
@@ -52,7 +57,7 @@
         font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
         color: @text-color;
         font-weight: normal;
-        font-size: @base-px -2px;
+        font-size: @base-px + 4px;
     } 
 
     // Base color
@@ -73,6 +78,13 @@
             position: absolute;
             height: 100%;
         }
+        .util-cell-text() {
+            padding-top: 8px;
+            padding-left: 6px;
+            padding-right: 6px;
+            overflow: hidden;
+            white-space: nowrap;
+        }
         .util-cell-apperance() {
             background-color: @cell-background-color;
             border: 1px solid @background-color;
@@ -87,15 +99,17 @@
             h2 { 
                 .util-cell-layout();
                 .util-cell-apperance();
+                .util-cell-text();
                 left: 0;
-                right: @base-px * 2px;
+                right: @base-px * 3px;
                 background-color: @amethyst;
             }
             .tool {
                 .util-cell-layout();
                 .util-cell-apperance();
+                cursor: pointer;
                 right: 0;
-                width: @base-px * 2px;
+                width: @base-px * 3px;
                 text-align: center;
                 background-color: @amethyst;
             }
@@ -106,14 +120,16 @@
             h3 { 
                 .util-cell-layout();
                 .util-cell-apperance();
+                .util-cell-text();
                 left: 0;
-                right: @base-px * 2px;
+                right: @base-px * 3px;
             }
             .tool {
                 .util-cell-layout();
                 .util-cell-apperance();
+                cursor: pointer;
                 right: 0;
-                width: @base-px * 2px;
+                width: @base-px * 3px;
             }
         }
 
@@ -122,17 +138,20 @@
             h3 { 
                 .util-cell-apperance();
                 .util-cell-layout();
+                .util-cell-text();
+                cursor:col-resize;
                 left: 0;
-                right: @base-px * 12px;
+                right: @base-px * 14px;
                 .slide {
                     width: 50%; //  to be set via js
                     height: 100%;
-                    background-color: pink;
+                    background-color: @cell-background-color-lighter;
                     position: absolute;
                     top: 0;
                     left: 0;
                 }
                 .text {
+                    .util-cell-text();
                     position: absolute;
                     top: 0;
                     left: 0;
@@ -141,17 +160,19 @@
             h4 {
                 .util-cell-apperance();
                 .util-cell-layout();
+                .util-cell-text();
                 width: @base-px * 8px;
-                right: @base-px * 4px;
+                right: @base-px * 6px;
                 text-align: right;
             }
             .tool {
                 .util-cell-layout();
                 .util-cell-apperance();
-                width: @base-px * 2px;
+                cursor: pointer;
+                width: @base-px * 3px;
                 background-color: @cell-background-color-light;
                 &.dec {
-                    right: @base-px * 2px;
+                    right: @base-px * 3px;
                 }
                 &.tool.inc {
                     right: 0;
@@ -161,41 +182,32 @@
 
         // Toggle
         &.toggle {
+            cursor: pointer;
             .tool {
                 .util-cell-apperance();
                 .util-cell-layout();
-                width: @base-px * 2px;
+                width: @base-px * 3px;
                 left: 0;
+                &.active {
+                    background-color: @orange;
+                }
             }
             h3 { 
                 .util-cell-apperance();
                 .util-cell-layout();
-                left: @base-px * 2px;
-                right: 0;
-            }
-        }
-
-        // Toggle
-        &.toggle {
-            .tool {
-                .util-cell-apperance();
-                .util-cell-layout();
-                width: @base-px * 2px;
-                left: 0;
-            }
-            h3 { 
-                .util-cell-apperance();
-                .util-cell-layout();
-                left: @base-px * 2px;
+                .util-cell-text();
+                left: @base-px * 3px;
                 right: 0;
             }
         }
 
         // Button
         &.button {
+            cursor: pointer;
             h3 { 
                 .util-cell-apperance();
                 .util-cell-layout();
+                .util-cell-text();
                 right: @base-px * 2px;
                 left: 0;
                 background-color: @cell-background-color-light;
@@ -204,6 +216,7 @@
             .tool {
                 .util-cell-apperance();
                 .util-cell-layout();
+                .util-cell-text();
                 width: @base-px * 2px;
                 right: 0;
                 background-color: @cell-background-color-light;

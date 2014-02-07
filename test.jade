@@ -5,79 +5,52 @@ html(lang="en")
         link( rel='stylesheet', type='text/css', href='/reset.css' )
         link( rel='stylesheet', type='text/css', href='/test.css' )
     body
-        mixin header( title )
-            .widget.header
-                h2= title
-                .tool ^
 
-        mixin color( title )
-            .widget.color
-                h3= title
-                .tool t
+        // Using ich haz to speed up iterations
 
-        mixin slider( title )
-             .widget.slider
-                h3
-                    .slide
-                    .text= title
-                h4 0.5
-                .tool.dec <
-                .tool.inc >
-
-        mixin toggle( title )
-            .widget.toggle
-                .tool *
-                h3= title
-
-        mixin button( tile )
-            .widget.button
-                h3= tile
-                .tool *
-
-        mixin textContent
-            // For name spacing
+        script( id="panel", type="text/html" )
             .remoxly 
                 .panel
                     .groups
-                        .group
-                            .widgets.header
-                                +header( 'Particles' )
 
-                            .widgets.body
-                                +color( 'Particle Color' )
-                                +color( 'Trail Color' )
+        script( id="group", type="text/html" )
+            .group
+                .widgets.header
+                    .widget.header
+                        h2 {{title}}
+                        .tool ^
+                    .widgets.body
+           
+        script( id="color", type="text/html" )
+            .widget.color
+                h3 {{title}}
+                .tool t
 
-                                +slider( 'Trail Width' )
-                                +slider( 'Speed' )
-                                +slider( 'Number of Particles' )
-                                +slider( 'Trail Length' )
-
-                                +toggle( 'Render Particles' )
-                                +toggle( 'Render Trails' )
-                                +toggle( 'Render Effects' )
-                                +toggle( 'Spawn Particles' )
-
-                        .group
-                            .widgets.header
-                                +header( 'Save and Load' )
-
-                            .widgets.body
-                                +slider( 'Number of files' )
-
-                                +button( 'Save' )
-                                +button( 'Load' )
-
-        .test-fixed-width
-            +textContent()
-        .test-fluid-width
-            +textContent()
-
-        // Template
         script( id="slider", type="text/html" )
-            .widget.slider
-                h3 Number of files
-                .tool.button <
-                .tool.button >
+             .widget.slider
+                h3
+                    .slide
+                    .text {{title}}
+                h4( contenteditable ) 0.5
+                .tool.dec <
+                .tool.inc >
 
-        // JavaScript Files     
+        script( id="toggle", type="text/html" )
+            .widget.toggle
+                .tool *
+                h3 {{title}}
+
+        script( id="button", type="text/html" )
+            .widget.button
+                h3 {{title}}
+                .tool *
+
+        // Placing the content here
+        .test-fixed-width
+        .test-fluid-width
+
+        // JavaScript Files    
+        script( src='/libs/jquery-2.1.0.min.js' )
+        script( src='/libs/ICanHaz.min.js' ) 
+        script( src='/src/remoxly.js' )
         script( src='/test.js' )
