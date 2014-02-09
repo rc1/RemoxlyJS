@@ -162,6 +162,21 @@ function Slider ( options ) {
             self.needsUpdate = true;
         }, 0 );
     });
+    // Slider dragging
+    this.sliderEl.on( 'mousedown touch', function ( e ) {
+        var documentEl = $( document );
+        documentEl.on( 'mouseup touchend', onUpHandler);
+        documentEl.on( 'mousemove touchmove', onMoveHandler );
+        onMoveHandler( e );
+    });
+    function onUpHandler () {
+        var documentEl = $( document );
+        documentEl.off( 'mousemove touchmove', onMoveHandler );
+        documentEl.off( 'mouseup touchend', onUpHandler );
+    }
+    function onMoveHandler ( e ) {
+        self.value = map( e.offsetX, 0, self.sliderEl.width(), self.min, self.max, true );
+    }
 
     // ###Option
     this.value = ( typeof options.value === 'undefined' ) ? 0 : options.value;
@@ -170,7 +185,7 @@ function Slider ( options ) {
     function getChangeAmount () {
         var range = Math.abs( self.min - self.max );
         if ( range <= 1 ) {
-            return 0.1;
+            return 0.01;
         } 
         return 1;
     }

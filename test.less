@@ -88,7 +88,16 @@
         .util-cell-apperance() {
             background-color: @cell-background-color;
             border: 1px solid @background-color;
-        }  
+        }
+        
+        * {
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            -khtml-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
 
         .tool {
             text-align: center;
