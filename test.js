@@ -49,6 +49,13 @@ function createTestPanel () {
 
     // Create the particles group
 
+    var connection = new Group( { title: 'Connect' } );
+
+    connection
+        .add( new TextInput( { title: 'Host' } ) )
+        .add( new TextInput( { title: 'Port' } ) )
+        .add( new Button( { title: 'Connect' } ) );
+
     var particles = new Group( { title: 'Particles' } );
 
     particles
@@ -77,6 +84,7 @@ function createTestPanel () {
     var panel = new Panel();
 
     panel
+        .add( connection )
         .add( particles )
         .add( saveAndLoad );
 

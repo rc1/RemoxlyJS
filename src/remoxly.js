@@ -117,7 +117,7 @@ function Slider ( options ) {
 
     // ## Value
 
-    // ### Property: Value<Boolean>
+    // ### Property: Value<Number>
     var value = false;
     Object.defineProperty( this, 'value', {
         get : function () { 
@@ -262,6 +262,58 @@ function Button ( options ) {
 Button.prototype.render = function () {
     if ( !this.needsUpdate ) { return; }
 
+    this.needsUpdate =  false;
+};
+
+// #TextInput
+// __Options__
+// * title<string>
+// * value<Number> _default: ''
+function TextInput ( options ) {
+    var self = this;
+
+    this.el = ich.textInput( {
+        title : options.title
+    });
+    this.textEl = this.el.find( 'h4' );
+    this.needsUpdate = true;
+
+    // ## Value
+
+    // ### Property: Value<String>
+    var value = false;
+    Object.defineProperty( this, 'value', {
+        get : function () { 
+            return value;
+        },
+        set : function ( v ) { 
+            value = v;
+            this.needsUpdate = true; 
+        }
+    });
+
+    // ###Events
+    // ### Text Input
+    // This won't work on IE
+    this.textEl.on( 'input', function (e) {
+        self.value = self.textEl.text();
+    });
+    // When it loses focus update it. This should work in IE
+    // it should also revert the number when it is clamped or NaN
+    this.textEl.on( 'blur', function (e) {
+        // Delay to ensure value updated
+        setTimeout( function () {
+            self.value = self.textEl.text();
+        }, 0 );
+    });
+
+    // ###Option
+    this.value = ( typeof options.value === 'undefined' ) ? 0 : options.value;
+}
+
+TextInput.prototype.render = function () {
+    if ( !this.needsUpdate ) { return; }
+    
     this.needsUpdate =  false;
 };
 
