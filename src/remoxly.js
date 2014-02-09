@@ -36,7 +36,7 @@ function Group ( options ) {
     
     // ###Property: isCollapsed<Boolean>
     var isCollapsed = true;
-    Object.defineProperty( this, "isCollapsed", {
+    Object.defineProperty( this, 'isCollapsed', {
         get : function () { 
             return isCollapsed;
         },
@@ -119,7 +119,7 @@ function Slider ( options ) {
 
     // ### Property: Value<Boolean>
     var value = false;
-    Object.defineProperty( this, "value", {
+    Object.defineProperty( this, 'value', {
         get : function () { 
             return value;
         },
@@ -219,7 +219,7 @@ function Toggle ( options ) {
 
     // ### Property: Value<Boolean>
     var value = false;
-    Object.defineProperty( this, "value", {
+    Object.defineProperty( this, 'value', {
         get : function () { 
             return value;
         },
