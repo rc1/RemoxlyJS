@@ -1,3 +1,53 @@
+// #Events mixin
+var EventsMixin = {
+    on : function ( event,  callback ) {
+        if ( typeof callback !== 'function' ) {
+            throw "callback not function";
+        }
+        this.events()[ event ] = this.events()[ event ] || [];
+        if ( this.events()[ event ] ) {
+            this.events()[ event ].push( callback );
+        }
+        return this;
+    },
+    off : function ( event, callback) {
+        if ( !callback ) {
+            delete this.events()[ event ];
+        } else {
+            if ( this.events()[ event ] ) {
+                var listeners = this.events()[ event ];
+                for ( var i = listeners.length-1; i>=0; --i ){
+                    if ( listeners[ i ] === callback ) {
+                        listeners.splice( i, 1 );
+                    }
+                }
+            }
+        }
+        return this;
+    },
+    // Call the event with name, calling handlers with all other arguments
+    trigger : function ( name, data ) {
+        var args = Array.prototype.slice.call( arguments, 1 );
+        if ( this.events()[ name ] ) {
+            var listeners = this.events()[ name ], 
+                len = listeners.length;
+            if ( len <= 0 ) { return false; }
+            while ( len-- ) {
+                if ( typeof listeners[ len ] === 'function' ) {
+                    listeners[ len ].apply( this, args );
+                }
+            }
+            return true;
+        } else {
+            return false;
+        }
+    },
+    events : function () {
+        this.eventsArray = this.eventsArray || [];
+        return this.eventsArray;
+    }
+};
+
 // #Panel
 function Panel ( options ) {
     this.el = ich.panel();
@@ -129,7 +179,8 @@ function Slider ( options ) {
             }
             if ( v === value ) { return; }
             value = v;
-            this.needsUpdate = true; 
+            self.needsUpdate = true;
+            self.trigger( 'change', value, self );
         }
     });
 
@@ -191,6 +242,8 @@ function Slider ( options ) {
     }
 }
 
+Slider.prototype = Object.create( EventsMixin );
+
 Slider.prototype.render = function () {
     if ( !this.needsUpdate ) { return; }
     // Set the percntage css of the slide
@@ -199,7 +252,7 @@ Slider.prototype.render = function () {
     if ( ! $( document.activeElement ).is( this.numberEl ) ) {
         this.numberEl.text( floatToString( this.value, 9 ) );
     }
-    this.needsUpdate =  false;
+    this.needsUpdate = false;
 };
 
 // #Toggle
@@ -226,7 +279,8 @@ function Toggle ( options ) {
         set : function ( v ) { 
             if ( v === value ) { return; }
             value = v;
-            this.needsUpdate = true; 
+            self.needsUpdate = true; 
+            self.trigger( 'change', value, self );
         }
     });
 
@@ -238,6 +292,8 @@ function Toggle ( options ) {
     // ###Option
     this.value = ( typeof options.value === 'undefined' ) ? false : options.value;
 }
+
+Toggle.prototype = Object.create( EventsMixin );
 
 Toggle.prototype.render = function () {
     if ( !this.needsUpdate ) { return; }
@@ -289,6 +345,7 @@ function TextInput ( options ) {
         set : function ( v ) { 
             value = v;
             this.needsUpdate = true; 
+            self.trigger( 'change', value, self );
         }
     });
 
@@ -310,6 +367,8 @@ function TextInput ( options ) {
     // ###Option
     this.value = ( typeof options.value === 'undefined' ) ? 0 : options.value;
 }
+
+TextInput.prototype = Object.create( EventsMixin );
 
 TextInput.prototype.render = function () {
     if ( !this.needsUpdate ) { return; }

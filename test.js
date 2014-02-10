@@ -58,14 +58,25 @@ function createTestPanel () {
 
     var particles = new Group( { title: 'Particles' } );
 
+    // Testing events
+    var trailWidth = new Slider( { title: 'Trail Width' } );
+    trailWidth.on( 'change', function () {
+        console.log( 'trail width change', arguments );
+    } );
+
+    var renderParticles = new Toggle( { title: 'Render Particles' } );
+    renderParticles.on( 'change', function () {
+        console.log( 'render particles changed', arguments );
+    } );
+
     particles
         .add( new Color( { title: 'Particle Color' } ) )
         .add( new Color( { title: 'Trail Color' } ) )
-        .add( new Slider( { title: 'Trail Width' } ) )
+        .add( trailWidth )
         .add( new Slider( { title: 'Speed' } ) )
         .add( new Slider( { title: 'Number of Particles' } ) )
         .add( new Slider( { title: 'Trail Length' } ) )
-        .add( new Toggle( { title: 'Render Particles' } ) )
+        .add( renderParticles )
         .add( new Toggle( { title: 'Render Trails' } ) )
         .add( new Toggle( { title: 'Render Effects' } ) )
         .add( new Toggle( { title: 'Spawn Particles' } ) );
