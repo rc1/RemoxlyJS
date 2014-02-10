@@ -6,7 +6,7 @@ module.exports = function( grunt ) {
         // Documentation
         docco: {
             distr: {
-                src: [ 'src/ui.js' ],
+                src: [ 'src/ui.js', 'src/mixins.js', 'src/utils.js', 'src/export.js', 'src/createClient.js' ],
                 options: {
                     output: 'docs/'
                 }
@@ -16,7 +16,7 @@ module.exports = function( grunt ) {
         concat: {
             options: {},
             distr: {
-                src: [ 'src/remoxly.header.js', 'src/mixins.js', 'src/ui.js', 'src/utils.js', 'src/exports.js', 'src/remoxly.footer.js' ],
+                src: [ 'src/remoxly.header.js', 'src/mixins.js', 'src/ui.js', 'src/utils.js', 'src/createClient.js', 'src/exports.js', 'src/remoxly.footer.js' ],
                 dest: 'build/remoxly.js'
             }
         },
@@ -28,7 +28,8 @@ module.exports = function( grunt ) {
                 },
                 files: {
                     'build/remoxly.css': 'src/ui.less',
-                    'examples/ui.only.css': 'examples/ui.only.less'
+                    'examples/ui.only.css': 'examples/ui.only.less',
+                    'examples/client.css': 'examples/client.less'
                 }
             }
         },
@@ -39,7 +40,8 @@ module.exports = function( grunt ) {
                     pretty: true
                 },
                 files: {
-                    'examples/ui.only.html' :'examples/ui.only.jade'
+                    'examples/ui.only.html' :'examples/ui.only.jade',
+                    'examples/client.html' :'examples/client.jade'
                 }
             }
         },

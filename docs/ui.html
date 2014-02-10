@@ -11,6 +11,37 @@
   <div id="container">
     <div id="background"></div>
     
+      <ul id="jump_to">
+        <li>
+          <a class="large" href="javascript:void(0);">Jump To &hellip;</a>
+          <a class="small" href="javascript:void(0);">+</a>
+          <div id="jump_wrapper">
+          <div id="jump_page">
+            
+              
+              <a class="source" href="createClient.html">
+                createClient.js
+              </a>
+            
+              
+              <a class="source" href="mixins.html">
+                mixins.js
+              </a>
+            
+              
+              <a class="source" href="ui.html">
+                ui.js
+              </a>
+            
+              
+              <a class="source" href="utils.html">
+                utils.js
+              </a>
+            
+          </div>
+        </li>
+      </ul>
+    
     <ul class="sections">
         
         
@@ -76,7 +107,7 @@ Panel.prototype.render = <span class="hljs-function"><span class="hljs-keyword">
         <span class="hljs-string">'&lt;div class="group"&gt;\n\
             &lt;div class="widgets header"&gt;\n\
                 &lt;div class="widget header"&gt;\n\
-                    &lt;h2&gt;'</span>+options.title+<span class="hljs-string">'}&lt;/h2&gt;\n\
+                    &lt;h2&gt;'</span>+options.title+<span class="hljs-string">'&lt;/h2&gt;\n\
                     &lt;div class="tool"&gt;^&lt;/div&gt;\n\
                 &lt;/div&gt;\n\
                 &lt;div class="widgets body"&gt;&lt;/div&gt;\n\
@@ -254,9 +285,9 @@ Color.prototype.render = <span class="hljs-function"><span class="hljs-keyword">
             &lt;div class="tool inc"&gt;&gt;&lt;/div&gt;\n\
         &lt;/div&gt;'</span>
     );
-    <span class="hljs-keyword">this</span>.max = ( <span class="hljs-keyword">typeof</span> options.max === <span class="hljs-string">'undefined'</span> ) ? <span class="hljs-number">1</span> : options.max;
-    <span class="hljs-keyword">this</span>.min = ( <span class="hljs-keyword">typeof</span> options.min === <span class="hljs-string">'undefined'</span> ) ? <span class="hljs-number">0</span> : options.min;
-    <span class="hljs-keyword">this</span>.clamp = ( <span class="hljs-keyword">typeof</span> options.clamp === <span class="hljs-string">'undefined'</span> ) ? <span class="hljs-literal">true</span> : options.clamp;
+    <span class="hljs-keyword">this</span>.max = ( <span class="hljs-keyword">typeof</span> options.max === <span class="hljs-string">'undefined'</span> ) ? <span class="hljs-number">1</span> : options.max;
+    <span class="hljs-keyword">this</span>.min = ( <span class="hljs-keyword">typeof</span> options.min === <span class="hljs-string">'undefined'</span> ) ? <span class="hljs-number">0</span> : options.min;
+    <span class="hljs-keyword">this</span>.clamp = ( <span class="hljs-keyword">typeof</span> options.clamp === <span class="hljs-string">'undefined'</span> ) ? <span class="hljs-literal">true</span> : options.clamp;
     <span class="hljs-keyword">this</span>.incrementEl = <span class="hljs-keyword">this</span>.el.find( <span class="hljs-string">'.tool.inc'</span> );
     <span class="hljs-keyword">this</span>.decrementEl = <span class="hljs-keyword">this</span>.el.find( <span class="hljs-string">'.tool.dec'</span> );
     <span class="hljs-keyword">this</span>.numberEl = <span class="hljs-keyword">this</span>.el.find( <span class="hljs-string">'h4'</span> );
@@ -426,7 +457,8 @@ it should also revert the number when it is clamped or NaN</p>
         documentEl.off( <span class="hljs-string">'mouseup touchend'</span>, onUpHandler );
     }
     <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">onMoveHandler</span> <span class="hljs-params">( e )</span> {</span>
-        self.value = map( e.offsetX, <span class="hljs-number">0</span>, self.sliderEl.width(), self.min, self.max, <span class="hljs-literal">true</span> );
+
+        self.value = map( e.pageX - self.sliderEl.offset().left  , <span class="hljs-number">0</span>, self.sliderEl.width(), self.min, self.max, <span class="hljs-literal">true</span> );
     }</pre></div></div>
             
         </li>

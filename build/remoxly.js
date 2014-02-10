@@ -504,6 +504,14 @@ function floatToString ( value, precision ) {
     var power = Math.pow( 10, precision || 0 );
     return String( Math.round( value * power ) / power );
 }
+// #CreateClient
+// Generates ui based off a remoxly config file
+
+function createClient ( options ) {
+
+	// @todo
+	
+}
 return {
 	Panel : Panel,
 	Group : Group,
