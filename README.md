@@ -2,7 +2,7 @@
 
 ##Building
 
-_First run: $npm install_
+_First run: `$npm install`_
 
 	$ grunt
 
