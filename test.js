@@ -85,9 +85,14 @@ function createTestPanel () {
 
     var saveAndLoad = new Group( { title: 'Save and Load' } );
 
+    var button = new Button( { title: 'Save' } );
+    button.on( 'triggered', function ( b ) {
+        console.log( b.options.title );
+    } );
+
     saveAndLoad
         .add( new Slider( { title: 'Number of files' } ) )
-        .add( new Button( { title: 'Save' } ) )
+        .add( button )
         .add( new Button( { title: 'Load' } ) );
 
 

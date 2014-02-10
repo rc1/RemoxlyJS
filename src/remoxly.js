@@ -1,5 +1,9 @@
-// #Events mixin
-var EventsMixin = {
+// #Mixins
+// ##Noop
+var noop = function (){};
+
+// ##Events
+var events = {
     on : function ( event,  callback ) {
         if ( typeof callback !== 'function' ) {
             throw "callback not function";
@@ -50,6 +54,7 @@ var EventsMixin = {
 
 // #Panel
 function Panel ( options ) {
+    this.options = options;
     this.el = ich.panel();
     this.contentEl = this.el.find( '.groups' );
     this.groups = [];
@@ -74,6 +79,7 @@ Panel.prototype.render = function () {
 function Group ( options ) {
     var self = this;
 
+    this.options = options;
     this.el = ich.group( {
         title : options.title
     });
@@ -154,6 +160,7 @@ Color.prototype.render = function () {
 function Slider ( options ) {
     var self = this;
 
+    this.options = options;
     this.el = ich.slider( {
         title : options.title
     });
@@ -244,7 +251,7 @@ function Slider ( options ) {
     }
 }
 
-Slider.prototype = Object.create( EventsMixin );
+Slider.prototype = Object.create( events );
 
 Slider.prototype.render = function () {
     if ( !this.needsUpdate ) { return; }
@@ -266,6 +273,7 @@ Slider.prototype.render = function () {
 function Toggle ( options ) {
     var self = this;
 
+    this.options = options;
     this.el = ich.toggle( {
         title : options.title
     });
@@ -297,7 +305,7 @@ function Toggle ( options ) {
     this.value = ( typeof options.value === 'undefined' ) ? false : options.value;
 }
 
-Toggle.prototype = Object.create( EventsMixin );
+Toggle.prototype = Object.create( events );
 
 Toggle.prototype.render = function () {
     if ( !this.needsUpdate ) { return; }
@@ -312,18 +320,26 @@ Toggle.prototype.render = function () {
 // #Button
 // __Options__
 // * title<string>
+// __Events__
+// * 'triggered' calls handlers with this<Button>
 function Button ( options ) {
+    var self = this;
+
+    this.options = options;
     this.el = ich.button( {
         title : options.title
     });
     this.needsUpdate = true;
+
+    // ###Event
+    this.el.on( 'click touch', function () {
+        self.trigger( 'triggered', self );
+    });
 }
 
-Button.prototype.render = function () {
-    if ( !this.needsUpdate ) { return; }
+Button.prototype = Object.create( events );
 
-    this.needsUpdate =  false;
-};
+Button.prototype.render = noop;
 
 // #TextInput
 // __Options__
@@ -334,6 +350,7 @@ Button.prototype.render = function () {
 function TextInput ( options ) {
     var self = this;
 
+    this.options = options;
     this.el = ich.textInput( {
         title : options.title
     });
@@ -374,13 +391,9 @@ function TextInput ( options ) {
     this.value = ( typeof options.value === 'undefined' ) ? 0 : options.value;
 }
 
-TextInput.prototype = Object.create( EventsMixin );
+TextInput.prototype = Object.create( events );
 
-TextInput.prototype.render = function () {
-    if ( !this.needsUpdate ) { return; }
-    
-    this.needsUpdate =  false;
-};
+TextInput.prototype.render = noop;
 
 // #Utils
 
