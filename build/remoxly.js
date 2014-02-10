@@ -1,3 +1,5 @@
+var R = ( function () {
+
 // #Mixins
 // ##Noop
 var noop = function (){};
@@ -51,11 +53,16 @@ var events = {
         return this.eventsArray;
     }
 };
-
 // #Panel
 function Panel ( options ) {
     this.options = options;
-    this.el = ich.panel();
+    this.el = $( 
+        '<div class="remoxly">\n\
+            <div class="panel">\n\
+                <div class="groups"></div>\n\
+            </div>\n\
+        </div>' 
+    );
     this.contentEl = this.el.find( '.groups' );
     this.groups = [];
 }
@@ -74,15 +81,23 @@ Panel.prototype.render = function () {
 
 // #Group
 // __Options__
-// * title<string>
-// * isCollapsed<Boolean> _default: true_
+// * `title<string>`
+// * `isCollapsed<Boolean>` _default: `true`_
 function Group ( options ) {
     var self = this;
 
     this.options = options;
-    this.el = ich.group( {
-        title : options.title
-    });
+    this.el = $( 
+        '<div class="group">\n\
+            <div class="widgets header">\n\
+                <div class="widget header">\n\
+                    <h2>'+options.title+'}</h2>\n\
+                    <div class="tool">^</div>\n\
+                </div>\n\
+                <div class="widgets body"></div>\n\
+            </div>\n\
+        </div>' 
+    );
     this.contentEl = this.el.find( '.widgets.body' );
     this.widgets = [];
     this.needsUpdate = true;
@@ -90,7 +105,8 @@ function Group ( options ) {
     // ##Collapsing
     var collapsedButtonEl = this.el.find( '.widget.header .tool' );
     
-    // ###Property: isCollapsed<Boolean>
+    // ###Property
+    // `isCollapsed<Boolean>`
     var isCollapsed = true;
     Object.defineProperty( this, 'isCollapsed', {
         get : function () { 
@@ -134,11 +150,14 @@ Group.prototype.render = function () {
 
 // #Color
 // __Options__
-// * title<string>
+// * `title<string>`
 function Color ( options ) {
-    this.el = ich.color( {
-        title : options.title
-    });
+    this.el = $(
+        '<div class="widget color">\n\
+            <h3>'+options.title+'</h3>\n\
+            <div class="tool">t</div>\n\
+        </div>'
+    );
     this.needsUpdate = true;
 }
 
@@ -150,23 +169,32 @@ Color.prototype.render = function () {
 
 // #Slider
 // __Options__
-// * title<string>
-// * value<Number> _default: 0_
-// * min<Number> _default: 0_
-// * max<Number> _default: 1_
-// * clamp<Boolean> _default: true_
+// * `title<string>`
+// * `value<Number>` _default: `0`_
+// * `min<Number>` _default: `0`_
+// * `max<Number>` _default: `1`_
+// * `clamp<Boolean>` _default: `true`_  
+//
 // __Events__
-// * 'change' calls handlers with value<Number> and this<Slider>
+// * `'change'` calls handlers with `value<Number>` and `this<Slider>`
 function Slider ( options ) {
     var self = this;
 
     this.options = options;
-    this.el = ich.slider( {
-        title : options.title
-    });
-    this.max = ( typeof options.max === 'undefined' ) ? 1 : options.max;
-    this.min = ( typeof options.min === 'undefined' ) ? 0 : options.min;
-    this.clamp = ( typeof options.clamp === 'undefined' ) ? true : options.clamp;
+    this.el = $(
+        '<div class="widget slider">\n\
+            <h3>\n\
+                <div class="slide"></div>\n\
+                <div class="text">'+options.title+'</div>\n\
+            </h3>\n\
+             <h4 contenteditable>0.5</h4>\n\
+            <div class="tool dec"><</div>\n\
+            <div class="tool inc">></div>\n\
+        </div>'
+    );
+    this.max = ( typeof options.max === 'undefined' ) ? 1 : options.max;
+    this.min = ( typeof options.min === 'undefined' ) ? 0 : options.min;
+    this.clamp = ( typeof options.clamp === 'undefined' ) ? true : options.clamp;
     this.incrementEl = this.el.find( '.tool.inc' );
     this.decrementEl = this.el.find( '.tool.dec' );
     this.numberEl = this.el.find( 'h4' );
@@ -176,7 +204,8 @@ function Slider ( options ) {
 
     // ## Value
 
-    // ### Property: Value<Number>
+    // ### Property: 
+    // `Value<Number>`
     var value = false;
     Object.defineProperty( this, 'value', {
         get : function () { 
@@ -266,23 +295,28 @@ Slider.prototype.render = function () {
 
 // #Toggle
 // __Options__
-// * title<string>
-// * value<Boolean> _default: false_
+// * `title<string>`
+// * `value<Boolean>` _default: `false`_
+//
 // __Events__
-// * 'change' calls handlers with value<Boolean> and this<Toggle>
+// * `'change'` calls handlers with `value<Boolean>` and `this<Toggle>`
 function Toggle ( options ) {
     var self = this;
 
     this.options = options;
-    this.el = ich.toggle( {
-        title : options.title
-    });
+    this.el = $(
+        '<div class="widget toggle">\n\
+            <div class="tool">*</div>\n\
+            <h3>'+options.title+'</h3>\n\
+        </div>'
+    );
     this.toolEl = this.el.find( '.tool' );
     this.needsUpdate = true;
 
     // ## Value
 
-    // ### Property: Value<Boolean>
+    // ### Property: 
+    // `Value<Boolean>`
     var value = false;
     Object.defineProperty( this, 'value', {
         get : function () { 
@@ -319,16 +353,20 @@ Toggle.prototype.render = function () {
 
 // #Button
 // __Options__
-// * title<string>
+// * `title<string>`
+//
 // __Events__
-// * 'triggered' calls handlers with this<Button>
+// * `'triggered'` calls handlers with `this<Button>`
 function Button ( options ) {
     var self = this;
 
     this.options = options;
-    this.el = ich.button( {
-        title : options.title
-    });
+    this.el = $(
+        '<div class="widget button">\n\
+            <h3>'+options.title+'</h3>\n\
+            <div class="tool">*</div>\n\
+        </div>'
+    );
     this.needsUpdate = true;
 
     // ###Event
@@ -343,23 +381,27 @@ Button.prototype.render = noop;
 
 // #TextInput
 // __Options__
-// * title<string>
-// * value<Number> _default: ''
+// * `title<string>`
+// * `value<Number>` _default: `''`
 // __Events__
-// * 'change' calls handlers with value<Boolean> and this<TextInput>
+// * `'change'` calls handlers with `value<Boolean>` and `this<TextInput>`
 function TextInput ( options ) {
     var self = this;
 
     this.options = options;
-    this.el = ich.textInput( {
-        title : options.title
-    });
+    this.el = $(
+        '<div class="widget textInput">\n\
+            <h3>'+options.title+'</h3>\n\
+            <h4 contenteditable></h4>\n\
+        </div>'
+    );
     this.textEl = this.el.find( 'h4' );
     this.needsUpdate = true;
 
     // ## Value
 
-    // ### Property: Value<String>
+    // ### Property: 
+    // `Value<String>`
     var value = false;
     Object.defineProperty( this, 'value', {
         get : function () { 
@@ -458,6 +500,17 @@ function clamp ( value, min, max, callbackOnClamp ) {
 
 // To remove floating point rounding errors
 function floatToString ( value, precision ) {
-    var power = Math.pow(10, precision || 0);
-    return String(Math.round(value * power) / power);
+    var power = Math.pow( 10, precision || 0 );
+    return String( Math.round(value * power ) / power );
 }
+return {
+	Panel : Panel,
+	Group : Group,
+	Color : Color,
+	Slider : Slider,
+	Toggle : Toggle,
+	Button : Button,
+	TextInput : TextInput
+};
+} ());
+

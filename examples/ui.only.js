@@ -49,55 +49,55 @@ function createTestPanel () {
 
     // Create the particles group
 
-    var connection = new Group( { title: 'Connect' } );
+    var connection = new R.Group( { title: 'Connect' } );
 
     connection
-        .add( new TextInput( { title: 'Host' } ) )
-        .add( new TextInput( { title: 'Port' } ) )
-        .add( new Button( { title: 'Connect' } ) );
+        .add( new R.TextInput( { title: 'Host' } ) )
+        .add( new R.TextInput( { title: 'Port' } ) )
+        .add( new R.Button( { title: 'Connect' } ) );
 
-    var particles = new Group( { title: 'Particles' } );
+    var particles = new R.Group( { title: 'Particles' } );
 
     // Testing events
-    var trailWidth = new Slider( { title: 'Trail Width' } );
+    var trailWidth = new R.Slider( { title: 'Trail Width' } );
     trailWidth.on( 'change', function () {
         console.log( 'trail width change', arguments );
     } );
 
-    var renderParticles = new Toggle( { title: 'Render Particles' } );
+    var renderParticles = new R.Toggle( { title: 'Render Particles' } );
     renderParticles.on( 'change', function () {
         console.log( 'render particles changed', arguments );
     } );
 
     particles
-        .add( new Color( { title: 'Particle Color' } ) )
-        .add( new Color( { title: 'Trail Color' } ) )
+        .add( new R.Color( { title: 'Particle Color' } ) )
+        .add( new R.Color( { title: 'Trail Color' } ) )
         .add( trailWidth )
-        .add( new Slider( { title: 'Speed' } ) )
-        .add( new Slider( { title: 'Number of Particles' } ) )
-        .add( new Slider( { title: 'Trail Length' } ) )
+        .add( new R.Slider( { title: 'Speed' } ) )
+        .add( new R.Slider( { title: 'Number of Particles' } ) )
+        .add( new R.Slider( { title: 'Trail Length' } ) )
         .add( renderParticles )
-        .add( new Toggle( { title: 'Render Trails' } ) )
-        .add( new Toggle( { title: 'Render Effects' } ) )
-        .add( new Toggle( { title: 'Spawn Particles' } ) );
+        .add( new R.Toggle( { title: 'Render Trails' } ) )
+        .add( new R.Toggle( { title: 'Render Effects' } ) )
+        .add( new R.Toggle( { title: 'Spawn Particles' } ) );
 
     // Create the save and load group
 
-    var saveAndLoad = new Group( { title: 'Save and Load' } );
+    var saveAndLoad = new R.Group( { title: 'Save and Load' } );
 
-    var button = new Button( { title: 'Save' } );
+    var button = new R.Button( { title: 'Save' } );
     button.on( 'triggered', function ( b ) {
         console.log( b.options.title );
     } );
 
     saveAndLoad
-        .add( new Slider( { title: 'Number of files' } ) )
+        .add( new R.Slider( { title: 'Number of files' } ) )
         .add( button )
-        .add( new Button( { title: 'Load' } ) );
+        .add( new R.Button( { title: 'Load' } ) );
 
 
     //# Create the panel
-    var panel = new Panel();
+    var panel = new R.Panel();
 
     panel
         .add( connection )
