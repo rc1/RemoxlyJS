@@ -1,9 +1,11 @@
-# Basic UI for variable tweeking
+#Basic UI for variable tweeking
 
-## Building
+##Building
+
+_First run: $npm install_
 
 	$ grunt
 
-## Developing
+##Developing
 
     $ grunt watch
