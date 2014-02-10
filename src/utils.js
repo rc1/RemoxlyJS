@@ -62,5 +62,5 @@ function clamp ( value, min, max, callbackOnClamp ) {
 // To remove floating point rounding errors
 function floatToString ( value, precision ) {
     var power = Math.pow( 10, precision || 0 );
-    return String( Math.round(value * power ) / power );
+    return String( Math.round( value * power ) / power );
 }

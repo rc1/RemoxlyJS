@@ -91,7 +91,7 @@ function Group ( options ) {
         '<div class="group">\n\
             <div class="widgets header">\n\
                 <div class="widget header">\n\
-                    <h2>'+options.title+'}</h2>\n\
+                    <h2>'+options.title+'</h2>\n\
                     <div class="tool">^</div>\n\
                 </div>\n\
                 <div class="widgets body"></div>\n\
@@ -502,7 +502,7 @@ function clamp ( value, min, max, callbackOnClamp ) {
 // To remove floating point rounding errors
 function floatToString ( value, precision ) {
     var power = Math.pow( 10, precision || 0 );
-    return String( Math.round(value * power ) / power );
+    return String( Math.round( value * power ) / power );
 }
 return {
 	Panel : Panel,

@@ -36,7 +36,7 @@ function Group ( options ) {
         '<div class="group">\n\
             <div class="widgets header">\n\
                 <div class="widget header">\n\
-                    <h2>'+options.title+'}</h2>\n\
+                    <h2>'+options.title+'</h2>\n\
                     <div class="tool">^</div>\n\
                 </div>\n\
                 <div class="widgets body"></div>\n\
