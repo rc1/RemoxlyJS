@@ -209,7 +209,8 @@ function Slider ( options ) {
         documentEl.off( 'mouseup touchend', onUpHandler );
     }
     function onMoveHandler ( e ) {
-        self.value = map( e.offsetX, 0, self.sliderEl.width(), self.min, self.max, true );
+
+        self.value = map( e.pageX - self.sliderEl.offset().left  , 0, self.sliderEl.width(), self.min, self.max, true );
     }
 
     // ###Option
