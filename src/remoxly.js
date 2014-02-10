@@ -149,6 +149,8 @@ Color.prototype.render = function () {
 // * min<Number> _default: 0_
 // * max<Number> _default: 1_
 // * clamp<Boolean> _default: true_
+// __Events__
+// * 'change' calls handlers with value<Number> and this<Slider>
 function Slider ( options ) {
     var self = this;
 
@@ -259,6 +261,8 @@ Slider.prototype.render = function () {
 // __Options__
 // * title<string>
 // * value<Boolean> _default: false_
+// __Events__
+// * 'change' calls handlers with value<Boolean> and this<Toggle>
 function Toggle ( options ) {
     var self = this;
 
@@ -325,6 +329,8 @@ Button.prototype.render = function () {
 // __Options__
 // * title<string>
 // * value<Number> _default: ''
+// __Events__
+// * 'change' calls handlers with value<Boolean> and this<TextInput>
 function TextInput ( options ) {
     var self = this;
 
